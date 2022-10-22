@@ -53,6 +53,7 @@ function SignUp() {
             navigate("/sign-in")
         }}
       >
+         {({ errors, touched }) => (
         <Form className="flex flex-col justify-center">
         <label className="text-left pt-2 ">Full Name</label>
           <Field
@@ -62,6 +63,9 @@ function SignUp() {
             type="text"
             className="border-2 p-2"
           />
+          {errors.name && touched.name ? (
+             <div>{errors.name}</div>
+           ) : null}
           <label className="text-left pt-2 ">User Name</label>
           <Field
             id="username"
@@ -70,6 +74,9 @@ function SignUp() {
             type="text"
             className="border-2 p-2"
           />
+          {errors.username && touched.username ? (
+             <div>{errors.username}</div>
+           ) : null}
           <label className="text-left pt-2 ">Email</label>
 
           <Field
@@ -79,6 +86,9 @@ function SignUp() {
             type="email"
             className="border-2 p-2"
           />
+          {errors.email && touched.email ? (
+             <div>{errors.email}</div>
+           ) : null}
           <label htmlFor="password" className="text-left pt-2 ">
             Password
           </label>
@@ -90,11 +100,15 @@ function SignUp() {
             type="password"
             className="border-2 p-2"
           />
+          {errors.password && touched.password ? (
+             <div>{errors.password}</div>
+           ) : null}
 
           <button type="submit" className="bg-orange-500 p-5 mt-5 rounded-md">
             Submit
           </button>
         </Form>
+        )}
       </Formik>
     </div>
   );
